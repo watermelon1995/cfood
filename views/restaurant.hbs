@@ -1,0 +1,140 @@
+<!-- Page Content -->
+<div class="container">
+
+<!-- Page Heading/Breadcrumbs -->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            {{restName}}
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a>
+            </li>
+            <li class="active">
+                {{restName}}
+            </li>
+        </ol>
+    </div>
+</div>
+<!-- /.row -->
+
+<!-- Content Row -->
+<div class="row">
+
+    <!-- Blog Post Content Column -->
+    <div class="col-lg-8">
+
+        <!-- Blog Post -->
+
+        <hr>
+
+        <!-- Date/Time -->
+        <p>
+            <i class="fa fa-clock-o"></i>
+                Posted on {{postTime}}
+        </p>
+
+        <hr>
+
+        <!-- Preview Image -->
+        <img class="img-responsive" src="{{restImg}}">
+
+        <hr>
+
+        <!-- Post Content -->
+        <p class="lead">
+            {{restDescription}}
+        </p>
+        
+        {{#if restDish.length}}
+            {{each restDish}}
+                <p>
+                    {{this.Name}}:  {{this.Description}}
+                </p>
+        {{/if}}
+            
+
+        <hr>
+
+        <!-- Blog Comments -->
+
+        <!-- Comments Form -->
+        <div class="well">
+            <h4>Leave a Comment:</h4>
+            <form role="form">
+                <div class="form-group">
+                    <textarea class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+        <hr>
+
+        <!-- Posted Comments -->
+
+        <!-- Comment -->
+        <div class="media">
+            <a class="pull-left" href="#">
+                <img class="media-object" src="http://placehold.it/64x64" alt="">
+            </a>
+            <div class="media-body">
+                <h4 class="media-heading">HIHI Son
+                    <small>August 25, 2014 at 9:30 PM</small>
+                </h4>
+                I tries this. Very Good!
+            </div>
+        </div>
+
+        <!-- Comment -->
+        <div class="media">
+            <a class="pull-left" href="#">
+                <img class="media-object" src="http://placehold.it/64x64" alt="">
+            </a>
+            <div class="media-body">
+                <h4 class="media-heading">HIHI SON 2
+                    <small>August 25, 2014 at 9:30 PM</small>
+                </h4>
+                辣到跳舞。>.<
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Blog Sidebar Widgets Column -->
+    <div class="col-md-4">
+
+        <!-- Blog Search Well -->
+        <div class="well">
+            <h4>Search Restaurant</h4>
+            <div class="input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+            <!-- /.input-group -->
+        </div>
+
+        <!-- Blog Categories Well -->
+        <div class="well">
+            <h4>Rating 1 to 5</h4>
+            <div class="row">
+                <div class="col-lg-6">
+
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+
+        <!-- Side Widget Well -->
+        <div class="well">
+            <h4>Related Recommendation</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+        </div>
+
+    </div>
+
+</div>

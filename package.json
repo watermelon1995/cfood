@@ -1,0 +1,27 @@
+{
+  "name": "cfood",
+  "version": "1.0.0",
+  "description": "Challenging Food System",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.13.4",
+    "express-handlebars": "^3.0.0",
+    "express-generator": "^4.13.1",
+    "mysql": "^2.10.2",
+    "socket.io": "^0.9.17",
+    "async": "^0.2.10",
+    "node-static": "^0.7.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://watermelon1995@bitbucket.org/group04_csci3100_2016/cfood.git"
+  },
+  "author": "group04_csci3100",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/group04_csci3100_2016/cfood#readme"
+}

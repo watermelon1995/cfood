@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            <span class="glyphicon glyphicon-fire"></span>
+            Hottest Challenge
+        </h1>
+    </div>
+</div>
+<div class="row">
+<div id = "Hot Challenge">
+    {{#each chall}}
+    
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><i class="fa fa-fw fa-compass"></i>{{this.Name}}</h4>
+            </div>
+            <div class="panel-body" style="min-height: 10;">
+                
+                <p><img src="{{this.ImageSrc}}" class="img-rounded" alt="Cinque Terre" width="304" height="236"></p>
+                
+                <div class="comment">
+                <p>
+                    {{this.Description}} <!-- Full text -->
+                </p>
+                </div>
+                
+                <a href="/restaurant/?rest={{this.ItemID}}" class="btn btn-default">
+                    Detail
+                </a>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
+
+</div>
+
+
+<div id = "Book Marked">
+    {{#each bMarked}}
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">Favourite</h2>
+        </div>
+        <div class="col-md-6">
+            <p>
+                <h2>
+                    {{this.Name}}
+                </h2>
+            </p>
+            <p>
+                {{this.Description}}
+            </p>
+        </div>
+        <div class="col-md-6">
+            <img class="img-responsive" src={{this.ImageSrc}}>
+        </div>
+    </div>
+    {{/each}}
+</div>
