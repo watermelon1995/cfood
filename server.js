@@ -1,26 +1,27 @@
 //  Include Node modules
+var util = require('util'); // debug
 var express = require('express');
+// var multer  = require('multer');
 var path = require("path");
 var exphbs = require('express-handlebars');
 var mysql = require('mysql');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var fileUpload = require('express-fileupload');
-var multer  = require('multer');
 // Handling POST method 
 var app = express();
 // create application/json parser
 var jsonParser = bodyParser.json();
 // create application/x-www-form-urlencoded parser
-var urlencodedParser = bodyParser.urlencoded({ extended: true }) ;
+var urlencodedParser = bodyParser.urlencoded({ extended: false }) ;
 // parse application/x-www-form-urlencoded
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json());
 app.use(fileUpload());
-var storage =   multer.diskStorage({
+/*var storage =   multer.diskStorage({
   destination: function (req, file, callback) {
     callback(null, './uploads');
   },
@@ -28,7 +29,7 @@ var storage =   multer.diskStorage({
     callback(null, file.fieldname + '-' + Date.now());
   }
 });
-var upload = multer({ storage : storage}).single('avatar');
+var upload = multer({ storage : storage}).single('avatar');*/
 
 
  // Connect to the mysql db
@@ -38,7 +39,6 @@ var connection = mysql.createConnection({
     password:   'qwertyuiop',
     database:   'cfood_db'
 });
-
 
 
 connection.connect(function(error){
@@ -87,6 +87,14 @@ app.get('/restaurant/', function(request, response){
       });
     });
 });
+//alert message
+app.get('/message/', function(request, response){
+  response.render('message',{
+    layout: 'layout',
+    message: "this is alert message!",
+  });
+});
+
 
 // handling registeration
 app.get('/signup/', function(request, response){
@@ -94,22 +102,26 @@ app.get('/signup/', function(request, response){
     layout: 'layout',
   });
 });
-// app.post('/signup/', function (request, response) {
-
-//   console.log("A new user has registered.");
-//   response.send(request.body.name);
-
-// });
-app.post('/signup/', urlencodedParser, function (request, response, next) {
-  console.log("A new user has registered.");
-  console.log(request.body);
-  //response.send(request.body);
-  upload(request,response,function(err) {
-        if(err) {
-            return response.send("Error uploading file.");
-        }
-        response.send("File is uploaded");
-   });
+app.post('/signup/',  function (request, response) {
+  //console.log("A new user has registered.");
+  console.log("A user has signed up");
+  //response.send(util.inspect(request.body)+"\n"+request.body);
+  // request.files.avatar.mv('./uploads');
+  // upload(request,response,function(err) {
+  //       if(err) {
+  //           return response.send("Error uploading file.");
+  //       }
+  //       //response.send("File is uploaded");
+  //  });
+  // response.send(util.inspect(request));
+  connection.query("INSERT INTO `user` (`uid`, `username`, `pw`, `name`, `avatar`) VALUES (NULL, '"+request.body.username+"', "+request.body.pw+", "+request.body.name+", '');", function(error, itemDetail){
+      if(error){
+        console.error(error);
+        response.status(500).end();
+        return;
+      }
+      response.send("Sign up successfully");
+    });
 
 
 
